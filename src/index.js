@@ -127,11 +127,11 @@ fastify.post("/pessoas", async (req, res) => {
         .limit(1)
         .then(item => item[0])
 
-    // if (peopleWithApelido) {
-    //     return res.code(422).send({
-    //         message: "Nickname can't use again"
-    //     })
-    // }    
+    if (peopleWithApelido) {
+        return res.code(422).send({
+            message: "Nickname can't use again"
+        })
+    }    
 
     data.id = randomUUID();
     if (data.stack.length > 0) data.stack = JSON.stringify(data.stack)
